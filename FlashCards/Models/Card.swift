@@ -14,6 +14,7 @@ class Card {
     var front: String
     var back: String
     var image: Data?
+    var cardDeck: CardDeck?
     
     init(front: String, back: String, image: Data? = nil) {
         self.front = front

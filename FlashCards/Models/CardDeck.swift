@@ -15,7 +15,7 @@ class CardDeck {
     @Relationship(deleteRule: .cascade)
     var cards: [Card]?
     
-    var cardDeck: CardDeck?
+
     
     init(name: String, cards: [Card]? = nil) {
         self.name = name
