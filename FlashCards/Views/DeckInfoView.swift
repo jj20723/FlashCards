@@ -6,17 +6,24 @@
 //
 
 import SwiftData
+import SwiftfulRouting
 import SwiftUI
 
 struct DeckInfoView: View {
     @Environment(\.modelContext) private var context
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.router) private var router
     
     @State private var addingDeck = false
+    @State private var name: String = ""
     
     var decks: [CardDeck]
     
     var body: some View {
-        VStack(spacing: 10) {
+        ZStack {
+            Color.cardLightGray.ignoresSafeArea()
+            
+            
             List {
                 ForEach(decks) { deck in
                     HStack {
@@ -29,7 +36,13 @@ struct DeckInfoView: View {
                             .font(.title3)
                             .frame(maxWidth: .infinity, alignment: .trailing)
                     }
-                    .navigationTitle("Flash Card Decks")
+ 
+                    .onTapGesture {
+                        router.showScreen(.fullScreenCover) { _ in
+                            CardDetailView(deck: deck)
+                        }
+                    }
+                    
                 }
                 .onDelete { indexSet in
                     indexSet.forEach { index in
@@ -37,20 +50,12 @@ struct DeckInfoView: View {
                         context.delete(deck)
                     }
                 }
-              
+                
             }
             .listStyle(.plain)
+
             
-            Button {
-                addingDeck.toggle()
-            } label: {
-                Text("Add New Deck")
-            }
-            .buttonStyle(.borderedProminent)
-            .sheet(isPresented: $addingDeck) {
-                AddDeckView()
-                    .presentationDetents([.medium])
-            }
+            
         }
     }
 }

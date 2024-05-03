@@ -6,6 +6,7 @@
 //
 
 import SwiftData
+import SwiftfulRouting
 import SwiftUI
 
 @main
@@ -15,7 +16,9 @@ struct FlashCardsApp: App {
     
     var body: some Scene {
         WindowGroup {
-            FlashCardDecks()
+            RouterView { _ in
+                FlashCardDecks()
+            }
         }
         .modelContainer(container)
     }
