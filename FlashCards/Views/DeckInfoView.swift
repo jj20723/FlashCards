@@ -21,8 +21,7 @@ struct DeckInfoView: View {
     
     var body: some View {
         ZStack {
-            Color.cardLightGray.ignoresSafeArea()
-            
+            Color.cardLightYellow.ignoresSafeArea()
             
             List {
                 ForEach(decks) { deck in
@@ -53,8 +52,6 @@ struct DeckInfoView: View {
                 
             }
             .listStyle(.plain)
-
-            
             
         }
     }

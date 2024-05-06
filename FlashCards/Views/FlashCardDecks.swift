@@ -21,7 +21,7 @@ struct FlashCardDecks: View {
     var body: some View {
         ZStack {
             
-            Color.cardLightGray.ignoresSafeArea()
+            Color.cardLightYellow.ignoresSafeArea()
             
             NavigationStack {
                 VStack {

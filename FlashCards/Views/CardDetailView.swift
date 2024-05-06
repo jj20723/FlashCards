@@ -22,20 +22,26 @@ struct CardDetailView: View {
                 Color.cardLightGray.ignoresSafeArea().opacity(0.8)
                 
                 VStack(spacing: 10) {
-                    HStack(spacing: 0) {
-                        TextField("", text: $deck.name)
-                         
-                        Text(" Card Deck")
-                         
-                    }
-                    .padding(.horizontal, 60)
-                    .font(.title)
+
+                    TextField("", text: $deck.name)
+                        .font(.title)
+                        .frame(maxWidth: .infinity, alignment: .center)
                     
                     Divider()
                     
                     Divider()
 
                     Spacer()
+                }
+                .padding()
+            }
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button {
+                        dismiss()
+                    } label: {
+                        Text("Cancel")
+                    }
                 }
             }
         }
